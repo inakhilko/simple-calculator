@@ -1,0 +1,63 @@
+.keypad {
+  display: flex;
+
+  &__main-block {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+
+    &-controls {
+      display: flex;
+    }
+
+    &-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__side-block {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__button {
+    flex: 1;
+
+    padding: 20px;
+    border: 1px solid grey;
+
+    color: #fff;
+    font-size: 26px;
+
+    &--side {
+      background-color: orange;
+
+      &:last-child {
+        border-radius: 0 0 15px;
+      }
+    }
+
+    &--top {
+      background-color: #726f6f;
+    }
+
+    &--numbers {
+      background-color: #adabab;
+
+      &:nth-child(10) {
+        grid-column-start: 1;
+        grid-column-end: 3;
+
+        border-radius: 0 0 0 15px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      padding: 15px;
+
+      font-size: 18px;
+    }
+  }
+}

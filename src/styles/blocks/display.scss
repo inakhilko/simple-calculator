@@ -1,0 +1,21 @@
+.calculator__panel {
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+
+  &-input {
+    padding: 8px 4px;
+    border: none;
+
+    text-align: right;
+    color: #fff;
+    font-size: 32px;
+
+    background-color: #494747;
+
+    @media (max-width: 560px) {
+      font-size: 26px;
+    }
+  }
+}

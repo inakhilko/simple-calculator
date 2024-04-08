@@ -1,0 +1,28 @@
+.controls {
+  display: flex;
+  gap: 4px;
+
+  margin-bottom: 70px;
+
+  .control {
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+
+    &__exit {
+      background-color: red;
+    }
+
+    &__minimize {
+      background-color: yellow;
+    }
+
+    &__maximize {
+      background-color: green;
+    }
+  }
+
+  @media (max-width: 560px) {
+    margin-bottom: 50px;
+  }
+}
