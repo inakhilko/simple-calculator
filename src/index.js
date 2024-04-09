@@ -1,5 +1,5 @@
-import CalculatorView from "./js/calculatorView";
 import "./styles/main.scss";
+import CalculatorController from "./js/calculatorController";
 
-const calculatorView = new CalculatorView();
-calculatorView.renderCalculator();
+const calculator = new CalculatorController();
+calculator.renderCalculator();

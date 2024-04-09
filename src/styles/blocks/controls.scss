@@ -7,18 +7,20 @@
   .control {
     width: 12px;
     height: 12px;
+
     border-radius: 6px;
+    border: 1px solid grey;
 
     &__exit {
-      background-color: red;
+      background-color: #ff6363;
     }
 
     &__minimize {
-      background-color: yellow;
+      background-color: #ffff79;
     }
 
     &__maximize {
-      background-color: green;
+      background-color: #87ff87;
     }
   }
 

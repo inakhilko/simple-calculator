@@ -6,7 +6,7 @@
     flex-direction: column;
     flex: 3;
 
-    &-controls {
+    &-operations {
       display: flex;
     }
 
@@ -28,36 +28,93 @@
     padding: 20px;
     border: 1px solid grey;
 
-    color: #fff;
     font-size: 26px;
 
-    &--side {
-      background-color: orange;
-
-      &:last-child {
-        border-radius: 0 0 15px;
-      }
+    &--side:last-child {
+      border-radius: 0 0 15px;
     }
 
-    &--top {
-      background-color: #726f6f;
-    }
+    &--numbers:nth-child(10) {
+      grid-column-start: 1;
+      grid-column-end: 3;
 
-    &--numbers {
-      background-color: #adabab;
-
-      &:nth-child(10) {
-        grid-column-start: 1;
-        grid-column-end: 3;
-
-        border-radius: 0 0 0 15px;
-      }
+      border-radius: 0 0 0 15px;
     }
 
     @media (max-width: 560px) {
       padding: 15px;
 
       font-size: 18px;
+    }
+  }
+}
+
+.dark-theme {
+  .keypad {
+    &__button {
+      color: #fff;
+
+      &--side {
+        background-color: #FFA500FF;
+
+        &:hover,
+        &:active {
+          background-color: #ffd786;
+        }
+      }
+
+      &--top {
+        background-color: #726f6f;
+
+        &:hover,
+        &:active {
+          background-color: #8f8b8b;
+        }
+      }
+
+      &--numbers {
+        background-color: #adabab;
+
+        &:hover,
+        &:active {
+          background-color: #cecccc;
+        }
+      }
+    }
+  }
+}
+
+.light-theme {
+  .keypad {
+    &__button {
+      color: #000;
+
+      &--side {
+        background-color: #87cefaff;
+
+        &:hover,
+        &:active {
+          background-color: #bde0fc;
+        }
+      }
+
+      &--top {
+        background-color: #d0d0d0;
+
+        &:hover,
+        &:active {
+          background-color: #8f8b8b;
+        }
+      }
+
+      &--numbers {
+        background-color: #ffffff;
+
+        &:hover,
+        &:active {
+          background-color: #e8e5e5;
+        }
+      }
     }
   }
 }

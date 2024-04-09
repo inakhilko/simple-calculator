@@ -1,8 +1,9 @@
-import createElement from "./helpers";
+import { createElement } from "./helpers";
 
 class CalculatorView {
   constructor() {
     this.calculatorWrapper = document.querySelector(".calculator__wrapper");
+    this.defaultTheme = "dark-theme";
 
     this.keypadTopContent = ["AC", "+/-", "%"];
     this.keypadSideContent = ["÷", "×", "-", "+", "="];
@@ -43,20 +44,21 @@ class CalculatorView {
   createInputPanel() {
     const inputPanel = this.createElement("div", ["calculator__panel"]);
     const controls = this.createControls();
-    const calculatorInput = this.createElement("input", [
-      "calculator__panel-input",
+    const calculatorPanelDisplay = this.createElement("p", [
+      "calculator__panel-display",
     ]);
-    inputPanel.append(controls, calculatorInput);
+    calculatorPanelDisplay.innerText = "0";
+    inputPanel.append(controls, calculatorPanelDisplay);
     return inputPanel;
   }
 
   createKeypad() {
     const keypad = this.createElement("div", ["keypad"]);
     const keypadMainBlock = this.createElement("div", ["keypad__main-block"]);
-    const keypadMainBlockControls = this.createElement("div", [
-      "keypad__main-block-controls",
+    const keypadMainBlockOperations = this.createElement("div", [
+      "keypad__main-block-operations",
     ]);
-    const keypadMainBlockControlsElements = this.keypadTopContent.map(
+    const keypadMainBlockOperationsElements = this.keypadTopContent.map(
       (content) =>
         this.createElement(
           "button",
@@ -64,7 +66,7 @@ class CalculatorView {
           content
         )
     );
-    keypadMainBlockControls.append(...keypadMainBlockControlsElements);
+    keypadMainBlockOperations.append(...keypadMainBlockOperationsElements);
 
     const keypadMainBlockNumbers = this.createElement("div", [
       "keypad__main-block-numbers",
@@ -78,7 +80,7 @@ class CalculatorView {
         )
     );
     keypadMainBlockNumbers.append(...keypadMainBlockNumbersElements);
-    keypadMainBlock.append(keypadMainBlockControls, keypadMainBlockNumbers);
+    keypadMainBlock.append(keypadMainBlockOperations, keypadMainBlockNumbers);
 
     const keypadSideBlock = this.createElement("div", ["keypad__side-block"]);
     const keypadSideBlockElements = this.keypadSideContent.map((content) =>
@@ -94,14 +96,45 @@ class CalculatorView {
     return keypad;
   }
 
+  changeTheme() {
+    if (this.calculatorWrapper.classList.contains("dark-theme")) {
+      this.calculatorWrapper.classList.remove("dark-theme");
+      this.calculatorWrapper.classList.add("light-theme");
+    } else {
+      this.calculatorWrapper.classList.remove("light-theme");
+      this.calculatorWrapper.classList.add("dark-theme");
+    }
+  }
+
   renderCalculator() {
     this.calculatorWrapper.innerHTML = "";
+    this.calculatorWrapper.classList.add(this.defaultTheme);
+    const themeButton = this.createElement(
+      "button",
+      ["theme-button"],
+      "Change theme"
+    );
+    themeButton.addEventListener("click", () => {
+      this.changeTheme();
+    });
     const calculator = this.createElement("div", ["calculator"]);
     const inputPanel = this.createInputPanel();
     const keypad = this.createKeypad();
 
     calculator.append(inputPanel, keypad);
-    this.calculatorWrapper.append(calculator);
+    this.calculatorWrapper.append(themeButton, calculator);
+    this.panelDisplayElement = document.querySelector(
+      ".calculator__panel-display"
+    );
+    this.keypadNumbersBlock = document.querySelector(
+      ".keypad__main-block-numbers"
+    );
+    this.keypadOperationsMainBlock = document.querySelector(
+      ".keypad__main-block-operations"
+    );
+    this.keypadOperationsSideBlock = document.querySelector(
+      ".keypad__side-block"
+    );
   }
 }
 
