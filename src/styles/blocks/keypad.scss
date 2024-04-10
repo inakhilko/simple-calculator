@@ -1,0 +1,120 @@
+.keypad {
+  display: flex;
+
+  &__main-block {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+
+    &-operations {
+      display: flex;
+    }
+
+    &-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__side-block {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__button {
+    flex: 1;
+
+    padding: 20px;
+    border: 1px solid grey;
+
+    font-size: 26px;
+
+    &--side:last-child {
+      border-radius: 0 0 15px;
+    }
+
+    &--numbers:nth-child(10) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+
+      border-radius: 0 0 0 15px;
+    }
+
+    @media (max-width: 560px) {
+      padding: 15px;
+
+      font-size: 18px;
+    }
+  }
+}
+
+.dark-theme {
+  .keypad {
+    &__button {
+      color: #fff;
+
+      &--side {
+        background-color: #ffa500ff;
+
+        &:hover,
+        &:active {
+          background-color: #ffd786;
+        }
+      }
+
+      &--top {
+        background-color: #726f6f;
+
+        &:hover,
+        &:active {
+          background-color: #8f8b8b;
+        }
+      }
+
+      &--numbers {
+        background-color: #adabab;
+
+        &:hover,
+        &:active {
+          background-color: #cecccc;
+        }
+      }
+    }
+  }
+}
+
+.light-theme {
+  .keypad {
+    &__button {
+      color: #000;
+
+      &--side {
+        background-color: #87cefaff;
+
+        &:hover,
+        &:active {
+          background-color: #bde0fc;
+        }
+      }
+
+      &--top {
+        background-color: #d0d0d0;
+
+        &:hover,
+        &:active {
+          background-color: #8f8b8b;
+        }
+      }
+
+      &--numbers {
+        background-color: #ffffff;
+
+        &:hover,
+        &:active {
+          background-color: #e8e5e5;
+        }
+      }
+    }
+  }
+}
